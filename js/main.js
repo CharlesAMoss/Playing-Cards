@@ -1,4 +1,6 @@
 'use strict';
+
+// Creates deck of 52 cards
 const getDeck = () => {
   let deck = [];
   const numVal = _.range(2, 11).map(String);
@@ -14,8 +16,13 @@ const getDeck = () => {
   return deck;
 };
 
+// Randomly orders an array
 const shuffleDeck = (deck) => _.shuffle(deck);
 
+/*
+// Sorts the 52 card deck into a 41 card deck,
+// two 5 card hands and a one card discard pile.
+*/
 const dealCards = (deck) => {
   let discard = []; let pOne = []; let pTwo = [];
   for (var card of deck) {
@@ -36,6 +43,16 @@ const dealCards = (deck) => {
   return [deck, discard, pOne, pTwo];
 };
 
+// A conditional that returns a string for styling the color.
+const suitColor = (card) => {
+  let color = '';
+  (card.includes('♥') || card.includes('♦'))
+  ? color = 'red'
+  : color = 'blk';
+
+  return color;
+};
+
 console.log(getDeck());
 console.log(shuffleDeck(getDeck()));
 console.log(dealCards(getDeck()));
@@ -43,9 +60,7 @@ console.log(dealCards(getDeck()));
 const display = (deck) => {
   let print = '';
   for (var card of deck) {
-    (card.includes('♥') || card.includes('♦'))
-    ? print += ' <span class="redSuit">' + card + '</span>'
-    : print += ' <span class="blkSuit">' + card + '</span>';
+    print += '<span class="' + suitColor(card) + 'Suit">' + card + '</span>';
   }
 
   return print;

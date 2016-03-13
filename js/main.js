@@ -1,8 +1,9 @@
 'use strict';
 
 // Creates deck of 52 cards
+let deck = []; let discard = []; let pOne = []; let pTwo = [];
+
 const getDeck = () => {
-  let deck = [];
   const numVal = _.range(2, 11).map(String);
   const faceVal = ['J', 'Q', 'K', 'A'];
   const value = numVal.concat(faceVal);
@@ -20,12 +21,31 @@ const getDeck = () => {
 // Randomly orders an array
 const shuffleDeck = (deck) => _.shuffle(deck);
 
+const addCard = (card, hand) => (hand.push(card));
+const removeCard = (deck, card) => {
+  const index = deck.indexOf(card);
+  (index > -1) ? deck.splice(index, 1) : stop;
+};
+
+const takeCard = (deck, card, hand) => {
+  addCard(card, hand);
+  removeCard(deck, card);
+};
+
+const drawCard = (hand) => {
+  takeCard(deck, deck[0], hand);
+};
+
+const discardCard = (card, hand) => {
+  addCard(card, discard);
+  removeCard(hand, card);
+};
+
 /*
 // Sorts the 52 card deck into a 41 card deck,
 // two 5 card hands and a one card discard pile.
 */
 const dealCards = (deck) => {
-  let discard = []; let pOne = []; let pTwo = [];
   for (var card of deck) {
     (card === deck[0]) ? pTwo.push(card) :
     (card === deck[1]) ? pOne.push(card) :
@@ -48,8 +68,7 @@ const dealCards = (deck) => {
 const suitColor = (card) => {
   let color = '';
   (card.includes('♥') || card.includes('♦'))
-  ? color = 'red'
-  : color = 'blk';
+  ? color = 'red' : color = 'blk';
   return color;
 };
 
@@ -68,7 +87,7 @@ const getValue = (card) => {
 //console.log(dealCards(getDeck()));
 
 const printCard = (card) => {
-  console.log(getValue(card));
+  console.log(...getValue(card));
   return '<span class="' + suitColor(card) + 'Suit">' + card + '</span>';
 };
 

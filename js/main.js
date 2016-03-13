@@ -49,18 +49,27 @@ const suitColor = (card) => {
   (card.includes('♥') || card.includes('♦'))
   ? color = 'red'
   : color = 'blk';
-
   return color;
 };
 
-console.log(getDeck());
-console.log(shuffleDeck(getDeck()));
-console.log(dealCards(getDeck()));
+const getValue = (card) => {
+  let value = [];
+  let num = parseInt(card, 10);
+  (isNaN(num)) ? num = 10 : stop;
+  let suit = card.slice(-1);
+  value.push(num, suit);
+  return value;
+};
+
+//console.log(getDeck());
+//console.log(shuffleDeck(getDeck()));
+//console.log(dealCards(getDeck()));
 
 const display = (deck) => {
   let print = '';
   for (var card of deck) {
     print += '<span class="' + suitColor(card) + 'Suit">' + card + '</span>';
+    console.log(getValue(card));
   }
 
   return print;

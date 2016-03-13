@@ -67,8 +67,8 @@
 
     .redSuit, .blkSuit {
         font-size: 1.5em;
-        margin: .5;
         word-wrap: break-word;
+        display: inline-block;
     }
 
     .redSuit {

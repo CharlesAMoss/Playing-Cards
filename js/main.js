@@ -13,6 +13,7 @@ const getDeck = () => {
   }
 
   deck = _.flatten(deck);
+  deck = shuffleDeck(deck);
   return deck;
 };
 
@@ -52,6 +53,7 @@ const suitColor = (card) => {
   return color;
 };
 
+// parses a card into an int value and string suit
 const getValue = (card) => {
   let value = [];
   let num = parseInt(card, 10);
@@ -65,14 +67,18 @@ const getValue = (card) => {
 //console.log(shuffleDeck(getDeck()));
 //console.log(dealCards(getDeck()));
 
-const display = (deck) => {
-  let print = '';
-  for (var card of deck) {
-    print += '<span class="' + suitColor(card) + 'Suit">' + card + '</span>';
-    console.log(getValue(card));
-  }
+const printCard = (card) => {
+  console.log(getValue(card));
+  return '<span class="' + suitColor(card) + 'Suit">' + card + '</span>';
+};
 
+const display = (deck, discard, pOne, pTwo) => {
+  let print = '';
+  print += deck.map(printCard) + '<hr>';
+  print += '<br>' + discard.map(printCard) + '<hr>';
+  print += '<br>' + pOne.map(printCard) + '<hr>';
+  print += '<br>' + pTwo.map(printCard) + '<hr>';
   return print;
 };
 
-document.getElementById('main').innerHTML = display(shuffleDeck(getDeck()));
+document.getElementById('main').innerHTML = display(...dealCards(getDeck()));

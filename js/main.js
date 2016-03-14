@@ -73,7 +73,7 @@ const suitColor = (card) => {
 };
 
 // parses a card into an int value and string suit
-const getValue = (card) => {
+const cardValue = (card) => {
   let value = [];
   let num = parseInt(card, 10);
   (isNaN(num)) ? num = 10 : stop;
@@ -82,12 +82,25 @@ const getValue = (card) => {
   return value;
 };
 
+// sorts integer values for handValue()
+const countCards = (cardValue) => {
+  let total = 0;
+  (Number.isInteger(cardValue)) ? total += cardValue : stop;
+  return total;
+};
+
+const handValue = (hand) => (
+  _.flatten(hand.map(cardValue))
+  .map(countCards)
+  .reduce((a, b) => (a + b), 0)
+);
+
 //console.log(getDeck());
 //console.log(shuffleDeck(getDeck()));
 //console.log(dealCards(getDeck()));
 
 const printCard = (card) => {
-  console.log(...getValue(card));
+  console.log(...cardValue(card));
   return '<span class="' + suitColor(card) + 'Suit">' + card + '</span>';
 };
 

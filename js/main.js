@@ -104,13 +104,11 @@ const printCard = (card) => {
   return '<span class="' + suitColor(card) + 'Suit">' + card + '</span>';
 };
 
-const display = (deck, discard, pOne, pTwo) => {
-  let print = '';
-  print += deck.map(printCard) + '<hr>';
-  print += '<br>' + discard.map(printCard) + '<hr>';
-  print += '<br>' + pOne.map(printCard) + '<hr>';
-  print += '<br>' + pTwo.map(printCard) + '<hr>';
-  return print;
-};
+const display = (deck, discard, pOne, pTwo) => (
+  `${deck.map(printCard)}<hr><br>
+    ${discard.map(printCard)}<hr><br>
+    ${pOne.map(printCard)}<hr><br>
+    ${pTwo.map(printCard)}<hr>`
+);
 
 document.getElementById('main').innerHTML = display(...dealCards(getDeck()));

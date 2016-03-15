@@ -13,6 +13,8 @@ const getDeck = () => {
     deck.push(cards);
   }
 
+  // todo : add jokers
+
   deck = _.flatten(deck);
   deck = shuffleDeck(deck);
   return deck;
@@ -21,21 +23,32 @@ const getDeck = () => {
 // Randomly orders an array
 const shuffleDeck = (deck) => _.shuffle(deck);
 
+// Adds an element to an array.
 const addCard = (card, hand) => (hand.push(card));
+
+// Removes a specfied element from an array.
 const removeCard = (deck, card) => {
   const index = deck.indexOf(card);
   (index > -1) ? deck.splice(index, 1) : stop;
 };
 
+// Adds an element to an array and removes element from origin
 const takeCard = (deck, card, hand) => {
   addCard(card, hand);
   removeCard(deck, card);
 };
 
+// todo : takeDiscardedCard
+
+/*
+// Removes the first indexed element from
+// deck array and adds it to a specfied array
+*/
 const drawCard = (hand) => {
   takeCard(deck, deck[0], hand);
 };
 
+// Removes a specfied element from an array
 const discardCard = (card, hand) => {
   addCard(card, discard);
   removeCard(hand, card);
@@ -72,7 +85,7 @@ const suitColor = (card) => {
   return color;
 };
 
-// parses a card into an int value and string suit
+// parses a card into an integer value and a string suit
 const cardValue = (card) => {
   let value = [];
   let num = parseInt(card, 10);
@@ -82,13 +95,14 @@ const cardValue = (card) => {
   return value;
 };
 
-// sorts integer values for handValue()
+// sorts integer cardValue for handValue()
 const countCards = (cardValue) => {
   let total = 0;
   (Number.isInteger(cardValue)) ? total += cardValue : stop;
   return total;
 };
 
+// Calculates the integer value of a specfied array
 const handValue = (hand) => (
   _.flatten(hand.map(cardValue))
   .map(countCards)

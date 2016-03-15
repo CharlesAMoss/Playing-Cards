@@ -101,7 +101,7 @@ const handValue = (hand) => (
 
 const printCard = (card) => {
   console.log(...cardValue(card));
-  return '<span class="' + suitColor(card) + 'Suit">' + card + '</span>';
+  return `<span class="${suitColor(card)}Suit">${card}</span>`;
 };
 
 const display = (deck, discard, pOne, pTwo) => (

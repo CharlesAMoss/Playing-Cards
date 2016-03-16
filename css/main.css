@@ -47,7 +47,7 @@
     }
     /* layout ================= */
     .wrapper {
-        width: 55%;
+        width: 65%;
         margin: 4em auto 0 auto;
     }
     /* interface ================ */
@@ -59,6 +59,7 @@
         padding: 20px;
         font-size: 1em;
         width: 100%;
+        cursor: pointer;
     }
     .form__btn:hover {
         background: #f0f5f5;
@@ -75,8 +76,9 @@
         border: 1px solid #000;
         border-radius: 4px;
         padding: 3.4rem 0;
-        margin-bottom: 1rem;
+        margin: 0 1rem 1rem 0;
         background: #f6f8f9; /* #f9f7f6 */
+        cursor: pointer;
 
     }
 

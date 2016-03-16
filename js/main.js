@@ -77,14 +77,6 @@ const dealCards = (deck) => {
   return [deck, discard, pOne, pTwo];
 };
 
-// A conditional that returns a string for styling the color.
-const suitColor = (card) => {
-  let color = '';
-  (card.includes('♥') || card.includes('♦'))
-  ? color = 'red' : color = 'blk';
-  return color;
-};
-
 // parses a card into an integer value and a string suit
 const cardValue = (card) => {
   let value = [];
@@ -113,16 +105,26 @@ const handValue = (hand) => (
 //console.log(shuffleDeck(getDeck()));
 //console.log(dealCards(getDeck()));
 
-const printCard = (card) => {
-  console.log(...cardValue(card));
-  return `<span class="${suitColor(card)}Suit">${card}</span>`;
+// A conditional that returns a string for styling the color.
+const suitColor = (card) => {
+  let color = '';
+  (card.includes('♥') || card.includes('♦'))
+  ? color = 'red' : color = 'blk';
+  return color;
 };
 
+const styleCard = (card) => (
+  `<span class="${suitColor(card)}Suit">${card}</span>`
+);
+
+// removes comma between printed elements
+const printCard = (deck) => (deck.map(styleCard).join(''));
+
 const display = (deck, discard, pOne, pTwo) => (
-  `${deck.map(printCard)}<hr><br>
-    ${discard.map(printCard)}<hr><br>
-    ${pOne.map(printCard)}<hr><br>
-    ${pTwo.map(printCard)}<hr>`
+  `${styleCard(deck[0])}
+    ${styleCard(_.last(discard))}<hr><br>
+    ${printCard(pOne)}<hr><br>
+    ${printCard(pTwo)}<hr>`
 );
 
 document.getElementById('main').innerHTML = display(...dealCards(getDeck()));

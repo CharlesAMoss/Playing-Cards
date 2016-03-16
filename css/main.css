@@ -9,6 +9,7 @@
     }
     body {
         width: 98%;
+        background: #483c32;
     }
     /* type ===================== */
     h1, h2, h3, h4, h5, h6 {
@@ -66,9 +67,17 @@
     /* content =============cards */
 
     .redSuit, .blkSuit {
-        font-size: 1.5em;
+        font-size: 3.5rem;
         word-wrap: break-word;
         display: inline-block;
+        width: 7rem;
+        text-align: center;
+        border: 1px solid #000;
+        border-radius: 4px;
+        padding: 3.4rem 0;
+        margin-bottom: 1rem;
+        background: #f6f8f9; /* #f9f7f6 */
+
     }
 
     .redSuit {

@@ -67,6 +67,13 @@
     }
     /* content =============cards */
 
+    .cardBack {
+        width: 7rem;
+        cursor: pointer;
+        margin: 0 1rem 1rem 0;
+        float: left;
+    }
+
     .redSuit, .blkSuit {
         font-size: 3.5rem;
         word-wrap: break-word;
@@ -75,7 +82,7 @@
         text-align: center;
         border: 1px solid #000;
         border-radius: 4px;
-        padding: 3.4rem 0;
+        padding: 2.6rem 0;
         margin: 0 1rem 1rem 0;
         background: #f6f8f9; /* #f9f7f6 */
         cursor: pointer;

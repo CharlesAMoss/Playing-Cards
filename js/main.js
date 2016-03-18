@@ -117,14 +117,17 @@ const styleCard = (card) => (
   `<span class="${suitColor(card)}Suit">${card}</span>`
 );
 
+const cardBack = `card_back.svg`;
+const printCardBack = () => (`<img class="cardBack" src="${cardBack}" />`);
+
 // removes comma between printed elements
 const printCard = (deck) => (deck.map(styleCard).join(''));
 
 const display = (deck, discard, pOne, pTwo) => (
-  `${styleCard(deck[0])}
-    ${styleCard(_.last(discard))}<hr><br>
-    ${printCard(pOne)}<hr><br>
-    ${printCard(pTwo)}<hr>`
+  `${printCardBack()}
+  ${styleCard(_.last(discard))}<hr><br>
+  ${printCard(pOne)}<hr><br>
+  ${printCard(pTwo)}<hr>`
 );
 
 document.getElementById('main').innerHTML = display(...dealCards(getDeck()));

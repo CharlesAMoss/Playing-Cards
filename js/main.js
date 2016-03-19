@@ -6,7 +6,7 @@ let deck = []; let discard = []; let pOne = []; let pTwo = [];
 const getDeck = () => {
   const numVal = _.range(2, 11).map(String);
   const faceVal = ['J', 'Q', 'K', 'A'];
-  const jokers = ['JK', 'JK'];
+  const jokers = ['Jk', 'jK'];
   const value = numVal.concat(faceVal);
   const suits = ['♠', '♥', '♣', '♦'];
   for (var suit of suits) {
@@ -72,7 +72,7 @@ const dealCards = (deck) => {
     (card === deck[10]) ? discard.push(card) : stop;
   }
 
-  deck = deck.slice(11, 51);
+  deck = deck.slice(11, 54);
   return [deck, discard, pOne, pTwo];
 };
 

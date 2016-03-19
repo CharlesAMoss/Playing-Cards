@@ -5,8 +5,11 @@
 ## Description
 _Modeling playing cards with JavaScript._
 
+## Setup
+_Clone and open index.html in your browser. To view the Mocha/Chai tests open spec-runner.html in your browser._
+
 ## Technologies Used
-_[Underscore.js](http://underscorejs.org/)_
+_This project makes use of: [Mocha](https://mochajs.org/), and [Chai](http://chaijs.com/) as testing-frameworks. And has a dependency for [jQuery](http://jquery.com/) and [Underscore.js](http://underscorejs.org/)_
 
 ### Legal
 Copyright (c) 2016 Charles A Moss

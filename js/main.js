@@ -14,10 +14,8 @@ const getDeck = () => {
     deck.push(cards);
   }
 
-  //deck = deck.concat(_.flatten(jokers));
+  deck = deck.concat(jokers);
   deck = _.flatten(deck);
-
-  deck = shuffleDeck(deck);
   return deck;
 };
 

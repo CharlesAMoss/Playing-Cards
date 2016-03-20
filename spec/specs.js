@@ -11,14 +11,14 @@ describe('Cards', function () {
 
   it('Creates an array of patterned strings', function () {
     for (var testCard of testDeck) {
-      expect(testCard).to.match(/(((10|[0-9])|(J|Q|K|A))[♠|♥|♣|♦])|(jK|Jk)/);
+      expect(testCard).to.match(/(((10|[2-9])|(J|Q|K|A))[♠|♥|♣|♦])|(jK|Jk)/);
     };
   });
 
   it('Shuffles the order of elements', function () {
     expect(shuffledDeck).to.have.lengthOf(54);
     for (var testCard of shuffledDeck) {
-      expect(testCard).to.match(/(((10|[0-9])|(J|Q|K|A))[♠|♥|♣|♦])|(jK|Jk)/);
+      expect(testCard).to.match(/(((10|[2-9])|(J|Q|K|A))[♠|♥|♣|♦])|(jK|Jk)/);
     };
   });
 
@@ -36,9 +36,29 @@ describe('Cards', function () {
 
   it('Adds an element to an array', function () {
     let testHand = dealtCards[2];
-    let testCard = 'A♠';
+    let testCard = dealtCards[0][0];
     testHand.pop();
     addCard(testCard, testHand);
+    expect(testCard).to.be.oneOf(testHand);
+    expect(testHand).to.have.lengthOf(5);
+  });
+
+  it('Removes a specfied element from an array', function () {
+    let testHand = dealtCards[2];
+    let testCard = dealtCards[0][0];
+    testHand.pop();
+    addCard(testCard, testHand);
+    removeCard(testHand, testCard);
+    expect(testCard).to.not.be.oneOf(testHand);
+    expect(testHand).to.have.lengthOf(4);
+  });
+
+  it('Adds an element to an array and removes element from origin', function () {
+    let testDeck = dealtCards[0];
+    let testHand = dealtCards[2];
+    let testCard = testDeck[0];
+    takeCard(testDeck, testCard, testHand);
+    expect(testCard).to.not.be.oneOf(testDeck);
     expect(testCard).to.be.oneOf(testHand);
     expect(testHand).to.have.lengthOf(5);
   });

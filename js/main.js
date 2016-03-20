@@ -25,7 +25,7 @@ const shuffleDeck = (deck) => _.shuffle(deck);
 // Adds an element to an array.
 const addCard = (card, hand) => (hand.push(card));
 
-// Removes a specfied element from an array.
+// Removes a specfied element from an array
 const removeCard = (deck, card) => {
   const index = deck.indexOf(card);
   (index > -1) ? deck.splice(index, 1) : stop;

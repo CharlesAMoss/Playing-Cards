@@ -2,9 +2,10 @@
 describe('Cards', function () {
 
   let testDeck = getDeck();
+  let shuffledDeck = shuffleDeck(testDeck);
+  let dealtCards = dealCards(shuffledDeck);
 
   it('Creates an array of a 54 elements', function () {
-    //const testDeck = getDeck();
     expect(testDeck).to.have.lengthOf(54);
   });
 
@@ -15,16 +16,13 @@ describe('Cards', function () {
   });
 
   it('Shuffles the order of elements', function () {
-    let shuffledDeck = shuffleDeck(testDeck);
     expect(shuffledDeck).to.have.lengthOf(54);
     for (var testCard of shuffledDeck) {
       expect(testCard).to.match(/(((10|[0-9])|(J|Q|K|A))[♠|♥|♣|♦])|(jK|Jk)/);
     };
   });
 
-  it('Divides the array in four arrays', function () {
-    let shuffledDeck = shuffleDeck(testDeck);
-    let dealtCards = dealCards(shuffledDeck);
+  it('Divides the array into four arrays', function () {
     let deck = dealtCards[0];
     let discard = dealtCards[1];
     let pOne = dealtCards[2];
@@ -34,6 +32,15 @@ describe('Cards', function () {
     expect(discard).to.have.lengthOf(1);
     expect(pOne).to.have.lengthOf(5);
     expect(pTwo).to.have.lengthOf(5);
+  });
+
+  it('Adds an element to an array', function () {
+    let testHand = dealtCards[2];
+    let testCard = 'A♠';
+    testHand.pop();
+    addCard(testCard, testHand);
+    expect(testCard).to.be.oneOf(testHand);
+    expect(testHand).to.have.lengthOf(5);
   });
 
 }); // end of tests

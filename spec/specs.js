@@ -84,10 +84,8 @@ describe('Cards', function () {
     expect(testHand).to.have.lengthOf(4);
   });
 
-  // ["A♠", "5♥", "3♦", "Q♠", "jK"]
-
-  it('Parses a "card" element and returns an integer and a string', function () {
-    let testCard1 = 'Q♠';
+  it('Parses a "card" element, returns an integer and a string', function () {
+    let testCard1 = 'J♠';
     let testCard2 = 'jK';
     let testCard3 = 'A♥';
     let testCard4 = '5♣';
@@ -106,6 +104,12 @@ describe('Cards', function () {
     let value = cardValue(testCard);
     let testValue = countCards(value[0]);
     expect(testValue).to.be.equal(10);
+  });
+
+  it('Adds the integer values of specfied array', function () {
+    let testHand = ['Q♦', 'A♠', '5♣', 'jK', '4♥'];
+    let testTotal = handValue(testHand);
+    expect(testTotal).to.be.equal(20);
   });
 
 }); // end of tests

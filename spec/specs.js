@@ -63,4 +63,16 @@ describe('Cards', function () {
     expect(testHand).to.have.lengthOf(5);
   });
 
+  it('Removes the 1st indexed element of "deck" array and adds it to specfied array', function () {
+    deck = dealtCards[0];
+    let testHand = dealtCards[2];
+    let testCard = dealtCards[0][0];
+    testHand.pop();
+    drawCard(testHand);
+    console.log(deck);
+    expect(testCard).to.not.be.oneOf(deck);
+    expect(testCard).to.be.oneOf(testHand);
+    expect(testHand).to.have.lengthOf(5);
+  });
+
 }); // end of tests

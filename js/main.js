@@ -77,16 +77,16 @@ const dealCards = (deck) => {
 // parses a card into an integer value and a string suit
 const cardValue = (card) => {
   let value = [];
-  let num = parseInt(card, 10);
-  (card.match(/A[♠|♥|♣|♦]/)) ? num = 1 : stop;
-  (card.match(/(jK|Jk)/)) ? num = 0 : stop;
-  (isNaN(num)) ? num = 10 : stop;
   let suit = card.slice(-1);
+  let num = parseInt(card, 10);
+  (card.match(/A[♠|♥|♣|♦]/)) ? num = 1  : stop;
+  (card.match(/(jK|Jk)/)) ? (num = 0, suit = '*') : stop;
+  (isNaN(num)) ? num = 10 : stop;
   value.push(num, suit);
   return value;
 };
 
-// sorts integer cardValue for handValue()
+// sorts "cardValue" integer for handValue()
 const countCards = (cardValue) => {
   let total = 0;
   (Number.isInteger(cardValue)) ? total += cardValue : stop;

@@ -84,4 +84,28 @@ describe('Cards', function () {
     expect(testHand).to.have.lengthOf(4);
   });
 
+  // ["A♠", "5♥", "3♦", "Q♠", "jK"]
+
+  it('Parses a "card" element and returns an integer and a string', function () {
+    let testCard1 = 'Q♠';
+    let testCard2 = 'jK';
+    let testCard3 = 'A♥';
+    let testCard4 = '5♣';
+    let value1 = cardValue(testCard1);
+    expect(value1).to.be.deep.equal([10, '♠']);
+    let value2 = cardValue(testCard2);
+    expect(value2).to.be.deep.equal([0, '*']);
+    let value3 = cardValue(testCard3);
+    expect(value3).to.be.deep.equal([1, '♥']);
+    let value4 = cardValue(testCard4);
+    expect(value4).to.be.deep.equal([5, '♣']);
+  });
+
+  it('Sorts "cardValue" integer for handValue()', function () {
+    let testCard = 'Q♠';
+    let value = cardValue(testCard);
+    let testValue = countCards(value[0]);
+    expect(testValue).to.be.equal(10);
+  });
+
 }); // end of tests

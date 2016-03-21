@@ -23,10 +23,10 @@ describe('Cards', function () {
   });
 
   it('Divides the array into four arrays', function () {
-    let deck = dealtCards[0];
-    let discard = dealtCards[1];
-    let pOne = dealtCards[2];
-    let pTwo = dealtCards[3];
+    deck = dealtCards[0];
+    discard = dealtCards[1];
+    pOne = dealtCards[2];
+    pTwo = dealtCards[3];
     expect(dealtCards).to.have.lengthOf(4);
     expect(deck).to.have.lengthOf(43);
     expect(discard).to.have.lengthOf(1);
@@ -69,10 +69,19 @@ describe('Cards', function () {
     let testCard = dealtCards[0][0];
     testHand.pop();
     drawCard(testHand);
-    console.log(deck);
     expect(testCard).to.not.be.oneOf(deck);
     expect(testCard).to.be.oneOf(testHand);
     expect(testHand).to.have.lengthOf(5);
+  });
+
+  it('Removes a specfied element from an array and adds it to "discard" array', function () {
+    discard = dealtCards[1];
+    let testHand = dealtCards[2];
+    let testCard = dealtCards[2][0];
+    discardCard(testCard, testHand);
+    expect(testCard).to.not.be.oneOf(testHand);
+    expect(testCard).to.be.oneOf(discard);
+    expect(testHand).to.have.lengthOf(4);
   });
 
 }); // end of tests

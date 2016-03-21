@@ -37,8 +37,6 @@ const takeCard = (deck, card, hand) => {
   removeCard(deck, card);
 };
 
-// todo : takeDiscardedCard
-
 /*
 // Removes the first indexed element from
 // deck array and adds it to a specfied array
@@ -80,6 +78,8 @@ const dealCards = (deck) => {
 const cardValue = (card) => {
   let value = [];
   let num = parseInt(card, 10);
+  (card.match(/A[♠|♥|♣|♦]/)) ? num = 1 : stop;
+  (card.match(/(jK|Jk)/)) ? num = 0 : stop;
   (isNaN(num)) ? num = 10 : stop;
   let suit = card.slice(-1);
   value.push(num, suit);

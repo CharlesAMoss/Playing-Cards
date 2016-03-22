@@ -100,9 +100,9 @@ const handValue = (hand) => (
   .reduce((a, b) => (a + b), 0)
 );
 
-//console.log(getDeck());
-//console.log(shuffleDeck(getDeck()));
-//console.log(dealCards(getDeck()));
+/*
+****************************************************** display *
+**/
 
 // A conditional that returns a string for styling the color.
 const suitColor = (card) => {

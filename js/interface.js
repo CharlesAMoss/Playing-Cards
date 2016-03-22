@@ -1,4 +1,13 @@
 'use strict';
+
 $(document).ready(function () {
-  $('#main').fadeIn('slow').append(display(...dealCards(getDeck())));
+  let deck = []; let discard = []; let pOne = []; let pTwo = [];
+  let dealtCards = dealCards(shuffleDeck(getDeck()));
+  $('#main').append(display(...dealtCards));
+
+  $('#main span').on('click', function () {
+    $(this).toggleClass('held');
+    console.log($(this).text());
+  });
+
 });

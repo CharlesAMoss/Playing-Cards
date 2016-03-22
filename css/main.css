@@ -9,7 +9,9 @@
     }
     body {
         width: 98%;
-        background: #483c32;
+        /*background: #483c32;
+        background: linear-gradient(135deg, #006e2e 0%,#00421b 100%);*/
+        background: #006e2e;
     }
     /* type ===================== */
     h1, h2, h3, h4, h5, h6 {
@@ -65,6 +67,7 @@
         background: #f0f5f5;
         color: #94b7b4;
     }
+
     /* content =============cards */
 
     .cardBack {
@@ -80,7 +83,7 @@
         display: inline-block;
         width: 7rem;
         text-align: center;
-        border: 1px solid #000;
+        /*border: 1px solid #000;*/
         border-radius: 4px;
         padding: 2.75rem 0;
         margin: 0 1rem 1rem 0;
@@ -95,6 +98,15 @@
 
     .blkSuit {
         color: #000;
+    }
+
+    .held {
+      border: 10px solid goldenrod;
+      padding: 2.15rem 0;
+    }
+
+    .selected {
+      border: .5rem solid #2cb42c;
     }
 
     /* clear fix ================ */

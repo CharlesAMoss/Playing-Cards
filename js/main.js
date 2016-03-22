@@ -93,7 +93,7 @@ const countCards = (cardValue) => {
   return total;
 };
 
-// Calculates the integer value of specfied array
+// adds the integer values of specfied array
 const handValue = (hand) => (
   _.flatten(hand.map(cardValue))
   .map(countCards)

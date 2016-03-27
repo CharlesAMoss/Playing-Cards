@@ -116,6 +116,10 @@ const styleCard = (card) => (
   `<span class="${suitColor(card)}Suit">${card}</span>`
 );
 
+const styleCard = (card) => (
+  `<span class="${suitColor(card)}Suit">${card}</span>`
+);
+
 const cardBack = `card_back.svg`;
 const printCardBack = () => (`<img class="cardBack" src="${cardBack}" />`);
 

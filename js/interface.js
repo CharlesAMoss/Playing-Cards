@@ -1,8 +1,13 @@
 'use strict';
 
-$(document).ready(function () {
+const startNewGame = () => {
   let deck = []; let discard = []; let pOne = []; let pTwo = [];
-  let dealtCards = dealCards(shuffleDeck(getDeck()));
+  return dealCards(shuffleDeck(getDeck()));
+};
+
+$(document).ready(function () {
+  let dealtCards = startNewGame();
+  let tempHand = [];
   $('#main').append(display(...dealtCards));
 
   $('#main span').on('click', function () {
@@ -10,4 +15,10 @@ $(document).ready(function () {
     console.log($(this).text());
   });
 
+  if ($('#main span').hasClass('held')) {
+    tempHand.push($(this).text());
+    return tempHand;
+  }
+
+  console.log(tempHand);
 });

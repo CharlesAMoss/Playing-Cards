@@ -79,7 +79,6 @@
 
     .redSuit, .blkSuit {
         font-size: 3.5rem;
-        word-wrap: break-word;
         display: inline-block;
         width: 7rem;
         text-align: center;

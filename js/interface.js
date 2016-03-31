@@ -20,10 +20,15 @@ $(document).ready(function () {
   discardPile.appendChild(document.createTextNode(_.last(discard)));
   discardPile.onclick = () => console.log('discard click');
 
+  let mainPiles = document.createElement('div');
+  mainPiles.className = 'mainPiles';
+  mainPiles.appendChild(drawPile);
+  mainPiles.appendChild(discardPile);
+
   let playerOne = printCard(pOne);
   let playerTwo = printCard(pTwo);
 
-  $('#main').append(drawPile, discardPile, playerOne, playerTwo);
+  $('#main').append(mainPiles, playerOne, playerTwo);
 
   // let tempHand = [];
   // $('#main').append(display(...dealtCards));

@@ -70,11 +70,16 @@
 
     /* content =============cards */
 
+    #deck, #discard {
+      margin: 0 2rem 2rem 0;
+    }
+
     .cardBack {
         width: 7rem;
         cursor: pointer;
         margin: 0 1rem 1rem 0;
         float: left;
+        box-shadow: 3px 3px 7px rgba(0,0,0,0.3);
     }
 
     .redSuit, .blkSuit {
@@ -83,12 +88,18 @@
         width: 7rem;
         text-align: center;
         /*border: 1px solid #000;*/
-        border-radius: 4px;
+        border-radius: 5px;
         padding: 2.75rem 0;
-        margin: 0 1rem 1rem 0;
+        margin: 0 1rem 0 0;
         background: #f6f8f9; /* #f9f7f6 */
         cursor: pointer;
+        box-shadow: 3px 3px 7px rgba(0,0,0,0.3);
 
+    }
+
+    #pOne .redSuit, #pOne .blkSuit {
+        position: relative;
+        float: left;
     }
 
     .redSuit {

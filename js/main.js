@@ -108,12 +108,12 @@ const handValue = (hand) => (
 const suitColor = (card) => {
   let color = '';
   (card.includes('♥') || card.includes('♦'))
-  ? color = 'red' : color = 'blk';
+  ? color = 'redSuit' : color = 'blkSuit';
   return color;
 };
 
 const styleCard = (card) => (
-  `<span class="${suitColor(card)}Suit">${card}</span>`
+  `<span class="${suitColor(card)}">${card}</span>`
 );
 
 const cardBack = `card_back.svg`;
@@ -121,5 +121,12 @@ const printCardBack = () => (`<img class="cardBack" src="${cardBack}" />`);
 
 // removes comma between printed elements
 const printCard = (deck) => (deck.map(styleCard).join(''));
+
+const display = (deck, discard, pOne, pTwo) => (
+  `${printCardBack()}
+  ${styleCard(_.last(discard))}<hr><br>
+  ${printCard(pOne)}<hr><br>
+  ${printCard(pTwo)}<hr>`
+);
 
 // document.getElementById('main').innerHTML = display(...dealCards(getDeck()));

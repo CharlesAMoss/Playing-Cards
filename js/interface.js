@@ -1,12 +1,5 @@
 'use strict';
 
-const display = (deck, discard, pOne, pTwo) => (
-  `${printCardBack()}
-  ${styleCard(_.last(discard))}<hr><br>
-  ${printCard(pOne)}<hr><br>
-  ${printCard(pTwo)}<hr>`
-);
-
 const startNewGame = () => {
   let deck = []; let discard = []; let pOne = []; let pTwo = [];
   return dealCards(shuffleDeck(getDeck()));
@@ -20,11 +13,15 @@ $(document).ready(function () {
   drawPile.src = cardBack;
   drawPile.onclick = () => drawCard();
 
-  let discardPile = styleCard(_.last(discard));
+  let discardPile = document.createElement('div');
+  let discardColor = suitColor(_.last(discard));
+  discardPile.className = discardColor;
+  discardPile.className += ' discard';
+  discardPile.appendChild(document.createTextNode(_.last(discard)));
+  discardPile.onclick = () => console.log('discard click');
+
   let playerOne = printCard(pOne);
   let playerTwo = printCard(pTwo);
-
-  // discardPile.onclick = () => console.log('discard click');
 
   $('#main').append(drawPile, discardPile, playerOne, playerTwo);
 

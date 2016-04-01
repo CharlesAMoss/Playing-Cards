@@ -25,18 +25,19 @@ $(document).ready(function () {
   mainPiles.appendChild(drawPile);
   mainPiles.appendChild(discardPile);
 
-  let playerOne = printCard(pOne);
-  let playerTwo = printCard(pTwo);
+  let playerOne = document.createElement('div');
+  playerOne.className = 'playerOne';
+
+  let playerTwo = document.createElement('div');
+  playerTwo.className = 'playerTwo';
+  console.log(playerTwo);
 
   $('#main').append(mainPiles, playerOne, playerTwo);
+  $('.playerOne').html(printCard(pOne));
+  $('.playerTwo').html(printCard(pTwo));
 
-  // let tempHand = [];
-  // $('#main').append(display(...dealtCards));
-  //
-  // $('#main span').on('click', function () {
-  //   $(this).toggleClass('held');
-  //   console.log($(this).text());
-  // });
-  //
-  // console.log(tempHand);
+  $('.playerOne').children().on('click', function () {
+    $(this).toggleClass('held');
+    console.log($(this).text());
+  });
 });
